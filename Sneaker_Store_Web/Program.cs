@@ -1,5 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Sneaker_Store_Web.Models;
+using Sneaker_Store_Web.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IProductRepository, EFProductRepository>();
+builder.Services.AddScoped<IBrandRepository, EFBrandRepository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

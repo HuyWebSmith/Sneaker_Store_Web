@@ -1,0 +1,187 @@
+﻿@model Sneaker_Store_Web.Models.Product
+<style>
+:root {
+        --primary-color: #FAF3E0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+        background: linear-gradient( -45deg, var(--primary-color),#FAF3E0 );
+    font-family: "Poppins";
+}
+
+.card {
+    background: white;
+    width: 320px;
+    height: 400px;
+    margin: 120px auto;
+    padding: 20px;
+    border-radius: 17px;
+    position: relative;
+}
+
+.card__heart,.card__cart {
+    font-size: 25px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.card__cart {
+    position: absolute;
+    right: 20px;
+}
+
+.card__img {
+    width: 90%;
+    height: 25%;
+    transition: 0.5s;
+}
+
+.card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.card__title { 
+    margin-top: 20px;
+}
+.card__title,.card__price {
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.card__size,.card__color {
+    display: flex;
+    align-items: center;
+}
+
+.card__size span {
+    padding: 1px 10px;
+    background: #2c2a2d;
+    color: white;
+    border-radius: 5px;
+    margin: 0 3px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.card__color span {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.card__color--red {
+    background: var(--primary-color);
+}
+
+.card__color--green {
+    background: green;
+}
+
+.card__action button{
+    border: none;
+    outline: none;
+    background: #2c2a2d;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.card:hover .card__img {
+    transform: translateY(-90px) rotate(-20deg);
+}
+
+.card:hover .card__title {
+    transform: translate(-57px,-72px);
+    
+}
+.card:hover .card__price {
+    transform: translate(-87px,-72px);
+}
+
+.card__color {
+    margin-top: 20px;
+}
+
+.card__size {
+    margin-top: 150px;
+}
+
+.card__action button:hover,
+.card__size span:hover {
+    transform: scale(0.9);
+}
+
+.card__size,
+.card__color,
+.card__action {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+}
+.card:hover .card__size,
+.card:hover .card__color,
+.card:hover .card__action {
+    visibility: visible;
+    opacity: 100;
+}
+
+.card:hover .card__size {
+    margin-top: -30px;
+}
+</style>
+        <div class="card">
+        <div class="card__heart">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="card__cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
+        <div class="card__img">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="Product Image" style="max-width:
+    200px;" />
+    }
+        </div>
+        <div class="card__title">@Model.ProductName</div>
+        <div class="card__price">$@Model.Price</div>
+
+        <div class="card__size">
+            <h3>Size:</h3>
+            <span>41</span>
+            <span>42</span>
+            <span>43</span>
+            <span>44</span>
+        </div>
+        <div class="card__color">
+            <h3>Color:</h3>
+            <span class="card__color--red"></span>
+            <span class="card__color--green"></span>
+        </div>
+        <div class="card__action">
+            <button>Buy now</button>
+            <button>Add Cart</button>
+        </div>
+        
+    </div>
+<a asp-action="Index" class="btn btn-outline-danger fs-5 fw-bold border-3"> < Back to List</a>
