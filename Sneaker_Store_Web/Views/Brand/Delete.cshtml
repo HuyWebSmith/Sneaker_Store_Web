@@ -1,0 +1,10 @@
+﻿@model Sneaker_Store_Web.Models.Brand
+<h2 class="mb-5">Delete Brand</h2>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.BrandId" />
+    <p>Product ID: @Model.BrandId</p>
+    <p>Are you sure you want to delete @Model.BrandName</p>
+    <button type="submit" class="btn btn-danger">Delete</button>  
+</form>
+
+

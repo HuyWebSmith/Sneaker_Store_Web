@@ -46,7 +46,8 @@ body{
 .card__img img {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
+    object-position: center;
 }
 
 .card__title { 
@@ -113,7 +114,7 @@ body{
     
 }
 .card:hover .card__price {
-    transform: translate(-87px,-72px);
+    transform: translate(-82px,-72px);
 }
 
 .card__color {
@@ -156,7 +157,7 @@ body{
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
 
-        <div class="card__img">
+        <div class="card__img ms-4">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
     {
         <img src="@Model.ImageUrl" alt="Product Image" style="max-width:

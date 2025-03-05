@@ -128,8 +128,10 @@ namespace Sneaker_Store_Web.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
+
             if (product == null)
             {
+                Console.WriteLine("Sản phẩm không tồn tại!");
                 return NotFound();
             }
             return View(product);

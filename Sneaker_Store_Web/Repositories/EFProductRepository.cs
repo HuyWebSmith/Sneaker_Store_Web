@@ -24,8 +24,9 @@ namespace Sneaker_Store_Web.Repositories
         {
             // return await _context.Products.FindAsync(id); 
             // lấy thông tin kèm theo brand 
-            return await _context.Products.Include(p =>
-        p.Brand).FirstOrDefaultAsync(p => p.ProductId == id);
+            return await _context.Products.Include(p =>p.Brand)
+                                            .FirstOrDefaultAsync(p => p.ProductId == id);
+
         }
 
         public async Task AddAsync(Product product)
@@ -43,8 +44,11 @@ namespace Sneaker_Store_Web.Repositories
         public async Task DeleteAsync(int id)
         {
             var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }  
         }
     }
 }

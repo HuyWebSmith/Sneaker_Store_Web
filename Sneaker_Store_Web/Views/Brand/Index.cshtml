@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Sneaker_Store_Web.Models.Brand>
+<h2 class="mb-5">Products</h2>
+<table class="table">
+<thead> 
+    <tr> 
+        <th>Brand Name</th>  
+        <th>Brand Image</th> 
+        
+        <th>Actions</th> 
+    </tr> 
+</thead> 
+<tbody> 
+@foreach (var brand in Model) 
+{ 
+    <tr> 
+        <td>@brand.BrandName</td> 
+        <td><img src="@brand.ImageUrl" style="width:150px;height:95px; object-fit:cover; margin-left:-20px;"/></td>  
+        <td> 
+            <a asp-action="Display" asp-route-id="@brand.BrandId" class="btn btn-success">View</a> |
+            <a asp-action="Update" asp-route-id="@brand.BrandId" class="btn btn-info">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@brand.BrandId" class="btn btn-danger">Delete</a>
+        </td> 
+    </tr> 
+} 
+</tbody> 
+</table>
